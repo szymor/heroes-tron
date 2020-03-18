@@ -167,7 +167,7 @@ heroeslvl_SOURCES = heroeslvl.c
 heroes_LDADD = lvl/libhlvl.a media/libhmcommon.a ../lib/libheroes.a \
 	       $(INTLLIBS) $(LIBALT_LOCAL_XLDADD) $(LIBALT_XLDADD)
 
-heroes_LDFLAGS = $(LIBALT_XLDFLAGS)
+heroes_LDFLAGS = $(LIBALT_XLDFLAGS) -lm
 
 heroes_DEPENDENCIES = lvl/libhlvl.a media/libhmcommon.a ../lib/libheroes.a \
 	       $(LIBALT_LOCAL_XLDADD) Makefile
