@@ -27,3 +27,14 @@ src/sys/std/.deps/
 stamp-h1
 tests/.deps/
 tests/Makefile
+src/lvl/.dirstamp
+src/media/.dirstamp
+src/media/sdl/.dirstamp
+src/media/sdl/keysdef.c
+src/media/sdl_mixer/.dirstamp
+src/sys/.dirstamp
+src/sys/std/.dirstamp
+*.o
+*.a
+heroes
+heroeslvl
