@@ -31,9 +31,7 @@ void
 wmsg (const char* msg, ...)
 #else
 void
-wmsg (msg, va_alist)
-     const char* msg;
-     va_dcl;
+wmsg (const char* msg, ...)
 #endif
 {
 #ifdef VA_START
@@ -52,7 +50,7 @@ wmsg (msg, va_alist)
 # endif /* HAVE_VPRINTF */
   va_end (args);
 #else
-  fprintf (stderr, msg, va_alist);
+  //fprintf (stderr, msg, va_alist);
 #endif /* VA_START */
   putc ('\n', stderr);
   fflush (stderr);
@@ -66,9 +64,7 @@ void
 emsg (const char* msg, ...)
 #else
 void
-emsg (msg, va_alist)
-     const char* msg;
-     va_dcl;
+emsg (const char* msg, ...)
 #endif
 {
 #ifdef VA_START
@@ -86,7 +82,7 @@ emsg (msg, va_alist)
 # endif /* HAVE_VPRINTF */
     va_end (args);
 #else
-    fprintf (stderr, msg, va_alist);
+    //fprintf (stderr, msg, va_alist);
 #endif /* VA_START */
     putc ('\n', stderr);
     fflush (stderr);

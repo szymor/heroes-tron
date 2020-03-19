@@ -34,7 +34,7 @@ extern const char* program_name;
 # ifdef VA_START
 void dmsg (enum debug_lvl dlvl, const char* msg, ...) ATTRIBUTE_PRINTF (2, 3);
 # else
-void dmsg (void);
+void dmsg (enum debug_lvl dlvl, const char* msg, ...);
 # endif
 void dperror (const char* s);
 #endif

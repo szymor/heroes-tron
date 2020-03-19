@@ -28,7 +28,7 @@ extern int disable_wmsg;
 #ifdef VA_START
 void wmsg (const char* msg, ...) ATTRIBUTE_PRINTF (1, 2);
 #else
-void wmsg (void);
+void wmsg (const char* msg, ...);
 #endif
 
 /* error messages */
@@ -38,7 +38,7 @@ extern int disable_emsg;
 #ifdef VA_START
 void emsg (const char* msg, ...) ATTRIBUTE_PRINTF (1, 2) ATTRIBUTE_NORETURN;
 #else
-void emsg (void);
+void emsg (const char* msg, ...);
 #endif
 
 /* exit heroes, closing libraries */

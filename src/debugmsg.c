@@ -34,10 +34,7 @@ void
 dmsg (enum debug_lvl dlvl, const char* msg, ...)
 #else
 void
-dmsg (dlvl, msg, va_alist)
-     enum debug_lvl dlvl;
-     const char* msg;
-     va_dcl;
+dmsg (enum debug_lvl dlvl, const char* msg, ...)
 #endif
 {
   if (dlvl & debug_level) {
@@ -54,7 +51,7 @@ dmsg (dlvl, msg, va_alist)
 # endif /* HAVE_VPRINTF */
     va_end (args);
 #else
-    fprintf (stdout, msg, va_alist);
+    //fprintf (stdout, msg, va_alist);
 #endif /* VA_START */
     putc ('\n', stdout);
     fflush (stdout);

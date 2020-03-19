@@ -34,6 +34,11 @@ src/media/sdl/keysdef.c
 src/media/sdl_mixer/.dirstamp
 src/sys/.dirstamp
 src/sys/std/.dirstamp
+intl/charset.alias
+intl/libintl.h
+intl/ref-add.sed
+intl/ref-del.sed
+src/media/dummy/.dirstamp
 *.o
 *.a
 heroes

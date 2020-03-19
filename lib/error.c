@@ -246,11 +246,7 @@ void
 #if defined VA_START && __STDC__
 error (int status, int errnum, const char *message, ...)
 #else
-error (status, errnum, message, va_alist)
-     int status;
-     int errnum;
-     char *message;
-     va_dcl
+error (int status, int errnum, char *message, ...)
 #endif
 {
 #ifdef VA_START
@@ -281,7 +277,7 @@ error (status, errnum, message, va_alist)
   VA_START (args, message);
   error_tail (status, errnum, message, args);
 #else
-  fprintf (stderr, message, a1, a2, a3, a4, a5, a6, a7, a8);
+  //fprintf (stderr, message, a1, a2, a3, a4, a5, a6, a7, a8);
 
   ++error_message_count;
   if (errnum)
@@ -310,13 +306,8 @@ void
 error_at_line (int status, int errnum, const char *file_name,
 	       unsigned int line_number, const char *message, ...)
 #else
-error_at_line (status, errnum, file_name, line_number, message, va_alist)
-     int status;
-     int errnum;
-     const char *file_name;
-     unsigned int line_number;
-     char *message;
-     va_dcl
+error_at_line (int status, int errnum, const char *file_name,
+			   unsigned int line_number, const char *message, ...)
 #endif
 {
 #ifdef VA_START
@@ -372,7 +363,7 @@ error_at_line (status, errnum, file_name, line_number, message, va_alist)
   VA_START (args, message);
   error_tail (status, errnum, message, args);
 #else
-  fprintf (stderr, message, a1, a2, a3, a4, a5, a6, a7, a8);
+  //fprintf (stderr, message, a1, a2, a3, a4, a5, a6, a7, a8);
 
   ++error_message_count;
   if (errnum)
