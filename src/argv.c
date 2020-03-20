@@ -253,7 +253,7 @@ parse_argv (int argc, char **argv, const char *from_file, int from_line)
     char* pname;
     XMALLOC_ARRAY (pname, (strlen (from_file) + strlen (program_name)
 			   + strlen (": :999999") + 1));
-    sprintf (pname, "%s: %s:%d", program_name, from_file, from_line);
+    sprintf (pname, "parse_argv: %s: %s:%d", program_name, from_file, from_line);
     argv[0] = pname;
   }
 

@@ -17,6 +17,8 @@
 | 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA                   |
 `------------------------------------------------------------------------*/
 
+#include <stdarg.h>
+
 #include "system.h"
 #include "debugmsg.h"
 #include "debughash.h"
@@ -41,7 +43,8 @@ dmsg (enum debug_lvl dlvl, const char* msg, ...)
 #ifdef VA_START
     va_list args;
 #endif
-    fprintf (stdout, "%s: ", program_name);
+	va_list args;
+    fprintf (stdout, "dmsg: %s: ", program_name);
 #ifdef VA_START
     VA_START (args, msg);
 # if HAVE_VPRINTF
@@ -51,7 +54,8 @@ dmsg (enum debug_lvl dlvl, const char* msg, ...)
 # endif /* HAVE_VPRINTF */
     va_end (args);
 #else
-    //fprintf (stdout, msg, va_alist);
+	  // !!!
+    fprintf (stdout, msg);
 #endif /* VA_START */
     putc ('\n', stdout);
     fflush (stdout);
@@ -62,7 +66,7 @@ void
 dperror (const char* s)
 {
   if (debug_level) {
-    fprintf (stderr, "%s: ", program_name);
+    fprintf (stderr, "dperror: %s: ", program_name);
     fflush (stderr);
     perror (s);
   }

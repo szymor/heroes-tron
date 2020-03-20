@@ -108,7 +108,7 @@ init_video_low (int stretch_, int *pitch)
 
   init_SDL ();
   dmsg (D_VIDEO, "set video mode");
-  visu = SDL_SetVideoMode (scr_w, scr_h, 8, visu_options);
+  visu = SDL_SetVideoMode (320, 240, 8, visu_options);
   /* FIXME: the Linux/m68k binary is crashing in the vicinity */
   if (!visu)
     emsg (_("Failed to open visual: %s"), SDL_GetError());

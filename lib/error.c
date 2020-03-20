@@ -20,6 +20,8 @@
 
 /* Written by David MacKenzie <djm@gnu.ai.mit.edu>.  */
 
+#include <stdarg.h>
+
 #ifdef HAVE_CONFIG_H
 # include <config.h>
 #endif
@@ -252,6 +254,7 @@ error (int status, int errnum, char *message, ...)
 #ifdef VA_START
   va_list args;
 #endif
+  va_list args;
 
   fflush (stdout);
 #ifdef _LIBC
@@ -270,14 +273,15 @@ error (int status, int errnum, char *message, ...)
 	__fwprintf (stderr, L"%s: ", program_name);
       else
 #endif
-	fprintf (stderr, "%s: ", program_name);
+	fprintf (stderr, "error: %s: ", program_name);
     }
 
 #ifdef VA_START
   VA_START (args, message);
   error_tail (status, errnum, message, args);
 #else
-  //fprintf (stderr, message, a1, a2, a3, a4, a5, a6, a7, a8);
+	// !!!
+  fprintf (stderr, message);
 
   ++error_message_count;
   if (errnum)
@@ -313,6 +317,7 @@ error_at_line (int status, int errnum, const char *file_name,
 #ifdef VA_START
   va_list args;
 #endif
+  va_list args;
 
   if (error_one_per_line)
     {
@@ -346,7 +351,7 @@ error_at_line (int status, int errnum, const char *file_name,
 	__fwprintf (stderr, L"%s: ", program_name);
       else
 #endif
-	fprintf (stderr, "%s:", program_name);
+	fprintf (stderr, "error_at_line: %s:", program_name);
     }
 
   if (file_name != NULL)
@@ -363,7 +368,8 @@ error_at_line (int status, int errnum, const char *file_name,
   VA_START (args, message);
   error_tail (status, errnum, message, args);
 #else
-  //fprintf (stderr, message, a1, a2, a3, a4, a5, a6, a7, a8);
+	// !!!
+  fprintf (stderr, message);
 
   ++error_message_count;
   if (errnum)

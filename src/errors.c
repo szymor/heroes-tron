@@ -16,7 +16,7 @@
 | with this program; if not, write to the Free Software Foundation, Inc., |
 | 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA                   |
 `------------------------------------------------------------------------*/
-
+#include <stdarg.h>
 #include "system.h"
 #include "errors.h"
 #include "video.h"
@@ -37,10 +37,11 @@ wmsg (const char* msg, ...)
 #ifdef VA_START
   va_list args;
 #endif
+  va_list args;
 
   if (disable_wmsg)
     return;
-  fprintf (stderr, "%s: ", program_name);
+  fprintf (stderr, "wmsg: %s: ", program_name);
 #ifdef VA_START
   VA_START (args, msg);
 # if HAVE_VPRINTF
@@ -50,7 +51,9 @@ wmsg (const char* msg, ...)
 # endif /* HAVE_VPRINTF */
   va_end (args);
 #else
-  //fprintf (stderr, msg, va_alist);
+  va_start(args, msg);
+  vfprintf (stderr, msg, args);
+  va_end(args);
 #endif /* VA_START */
   putc ('\n', stderr);
   fflush (stderr);
@@ -70,9 +73,10 @@ emsg (const char* msg, ...)
 #ifdef VA_START
   va_list args;
 #endif
+  va_list args;
 
   if (!disable_emsg) {
-    fprintf (stderr, "%s: ", program_name);
+    fprintf (stderr, "emsg: %s: ", program_name);
 #ifdef VA_START
     VA_START (args, msg);
 # if HAVE_VPRINTF
@@ -82,7 +86,9 @@ emsg (const char* msg, ...)
 # endif /* HAVE_VPRINTF */
     va_end (args);
 #else
-    //fprintf (stderr, msg, va_alist);
+    va_start(args, msg);
+    vfprintf (stderr, msg, args);
+    va_end(args);
 #endif /* VA_START */
     putc ('\n', stderr);
     fflush (stderr);
